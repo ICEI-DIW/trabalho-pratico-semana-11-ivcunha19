@@ -4,10 +4,10 @@ Nessa etapa, vamos evoluir o projeto anterior e contemplar um ambiente de desenv
 
 ## Informações do trabalho
 
-- Nome:
-- Matricula:
-- Proposta de projeto escolhida:
-- Breve descrição sobre seu projeto:
+- Nome: Ivo Villani Cunha
+- Matricula: 893642
+- Proposta de projeto escolhida: Site de viagens
+- Breve descrição sobre seu projeto: Um site que permite que usuários descubram os melhores destinos para uma viagem, podendo escolher o local de procura e ler descrições sobre os locais
 
 **Print do teste da API com visualização do JSON**
 
