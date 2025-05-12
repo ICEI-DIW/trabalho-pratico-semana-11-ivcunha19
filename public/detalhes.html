@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destino</title>
+    <script src="assets/scripts/app.js" defer></script>
+    <link rel="stylesheet" href="assets/css/detalhes.css">
+</head>
+<body>
+    <div class="container">
+        <header id="cabecalho">
+            <h1><a href="index.html">Voe Alto</a></h1>
+            <h4 class="subtitulo">As melhores dicas de viagem</h2>
+        </header>
+        
+        
+        <main id="detalhes-container">
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            const destinoSelecionado = destinos.find(destino => destino.id == id);
+            const container = document.getElementById('detalhes-container');            
+            if (destinoSelecionado) {
+                container.innerHTML = `
+                    <article class="tudo">
+                        
+                        <div class="localizacao">
+                            <h2>${destinoSelecionado.localizacao}</h2>
+                            
+                            <div class="informacoes">
+                                <span>País: ${destinoSelecionado.pais}</span>
+                                <span>Idioma: ${destinoSelecionado.idioma}</span>
+                                <span>Categoria: ${destinoSelecionado.categoria}</span>
+                            </div>
+                            
+                            <p>${destinoSelecionado.descricao}</p>
+                            <img src="${destinoSelecionado.imagem}" alt="${destinoSelecionado.localizacao}" class="foto">
+                        </div>
+                        
+                    </article>
+                `;
+            } else {
+                container.innerHTML = `
+                    <div class="destino-detalhado">
+                        <h2>Destino não encontrado</h2>
+                        <p>O destino que você está procurando não existe ou foi removido.</p>
+                    </div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
+</html>
