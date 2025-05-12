@@ -19,41 +19,37 @@
         </main>
     </div>
 
-    <script src="app.js"></script>
+    <script src="assets\scripts\app.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const id = urlParams.get('id');
-            const destinoSelecionado = destinos.find(destino => destino.id == id);
-            const container = document.getElementById('detalhes-container');            
-            if (destinoSelecionado) {
-                container.innerHTML = `
+    if (window.location.pathname.includes('detalhes.html')) {
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+
+  fetch(`http://localhost:3000/destinos/${id}`)
+        .then(response => response.json())
+        .then(destino => {
+            const container = document.getElementById('detalhes-container');
+            container.innerHTML = `
                     <article class="tudo">
                         
                         <div class="localizacao">
-                            <h2>${destinoSelecionado.localizacao}</h2>
+                            <h2>${destino.localizacao}</h2>
                             
                             <div class="informacoes">
-                                <span>País: ${destinoSelecionado.pais}</span>
-                                <span>Idioma: ${destinoSelecionado.idioma}</span>
-                                <span>Categoria: ${destinoSelecionado.categoria}</span>
+                                <span>País: ${destino.pais}</span>
+                                <span>Idioma: ${destino.idioma}</span>
+                                <span>Categoria: ${destino.categoria}</span>
                             </div>
                             
-                            <p>${destinoSelecionado.descricao}</p>
-                            <img src="${destinoSelecionado.imagem}" alt="${destinoSelecionado.localizacao}" class="foto">
+                            <p>${destino.descricao}</p>
+                            <img src="${destino.imagem}" alt="${destino.localizacao}" class="foto">
                         </div>
                         
                     </article>
                 `;
-            } else {
-                container.innerHTML = `
-                    <div class="destino-detalhado">
-                        <h2>Destino não encontrado</h2>
-                        <p>O destino que você está procurando não existe ou foi removido.</p>
-                    </div>
-                `;
-            }
-        });
+    })
+}
+
     </script>
 </body>
 </html>
